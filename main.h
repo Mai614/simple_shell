@@ -12,4 +12,7 @@
 #include <fcntl.h>
 #include <errno.h>
 
+int sum(int a, int b);
+
+
 #endif

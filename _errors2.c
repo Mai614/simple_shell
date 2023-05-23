@@ -140,5 +140,5 @@ char *convert_number(long int num, int base, int flags)
 	if (signs)
 		*--str = signs;
 
-	return str;
+	return (str);
 }

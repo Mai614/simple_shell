@@ -119,24 +119,26 @@ n++;
  */
 char *convert_number(long int num, int base, int flags)
 {
-static char buffer[50];
-char signs = 0;
-char *n;
-unsigned long n = num;
+	static char buffer[50];
+	char signs = 0;
+	char *str;
+	unsigned long n = num;
 
-if (!(flags & CONVERT_UNSIGNED) && num < 0)
-{
-n = -num;
-signs = '-';
-}
-n = &buffer[49];
-*n = '\0';
+	if (!(flags & CONVERT_UNSIGNED) && num < 0)
+	{
+		n = -num;
+		signs = '-';
+	}
+	str = &buffer[49];
+	*str = '\0';
 
-do {
-*--n = "0123456789ABCDEF"[n % base];
-n /= base;
-} while (n != 0);
-if (signs)
-*--n = signs;
-return (n);
+	do {
+		*--str = "0123456789ABCDEF"[n % base];
+		n /= base;
+	} while (n != 0);
+
+	if (signs)
+		*--str = signs;
+
+	return str;
 }

@@ -8,14 +8,13 @@ int renumber_history(info_t *info)
 {
 list_t *node = info->history;
 int i = 0;
-while (node)
+for (; node; node = node->next)
 {
 node->num = i++;
-node = node->next;
 }
-return (info->histcount = i);
+info->histcount = i;
+return (info->histcount);
 }
-
 /**
  * get_history_file - gets the history file
  * @info: parameter struct

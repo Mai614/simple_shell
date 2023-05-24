@@ -6,7 +6,7 @@
  * @var: The string env var property.
  * Return: 1 on success, 0 otherwise.
  */
-int _unsetenv(info_t *info, char *var)
+int unsetenv(info_t *info, char *var)
 {
 list_t *node = info->env;
 size_t i = 0;
@@ -55,7 +55,7 @@ return (info->environ);
  * @value: The string env var value.
  * Return: 0 --> success, 1 --> failure.
  */
-int _setenv(info_t *info, char *var, char *value)
+int setenv(info_t *info, char *var, char *value)
 {
 char *buf = NULL;
 list_t *node;

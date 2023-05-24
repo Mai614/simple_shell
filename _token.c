@@ -1,8 +1,6 @@
-/*********************done************************/
 /********tokenizer.c + realloc.c********/
 
 #include "main.h"
-
 /**
  * ffree - frees a string of strings
  * @pp: string of strings

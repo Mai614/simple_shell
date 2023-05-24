@@ -55,7 +55,7 @@ return (NULL);
 char *_strncat(char *dest, char *src, int n)
 {
 int i, j;
-char *s = dest;
+char *d = dest;
 i = 0;
 j = 0;
 while (dest[i] != '\0')
@@ -68,5 +68,6 @@ j++;
 }
 if (j < n)
 dest[i] = '\0';
-return (s);
+
+return (d);
 }

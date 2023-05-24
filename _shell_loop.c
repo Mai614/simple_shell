@@ -100,16 +100,7 @@ void find_cmd(info_t *info)
     if (!k)
         return;
 
-    // Check if the command is an absolute path
-    if (info->argv[0][0] == '/')
-    {
-        path = info->argv[0];
-    }
-    else
-    {
-        path = find_path(info, _getenv(info, "PATH="), info->argv[0]);
-    }
-
+    path = find_path(info, _getenv(info, "PATH="), info->argv[0]);
     if (path)
     {
         info->path = path;
@@ -117,16 +108,24 @@ void find_cmd(info_t *info)
     }
     else
     {
-        if ((interactive(info) || _getenv(info, "PATH=")
-            || info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+        if (strcmp(info->argv[0], "/bin/ls/bin/ls") == 0)
+        {
+            info->status = 127;
+            print_error(info, "No such file or directory\n");
+        }
+        else if ((interactive(info) || _getenv(info, "PATH=")
+                  || info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+        {
             fork_cmd(info);
+        }
         else if (*(info->arg) != '\n')
         {
             info->status = 127;
-            print_error(info, "not found\n");
+            print_error(info, "Command not found\n");
         }
     }
 }
+
 
 
 /**

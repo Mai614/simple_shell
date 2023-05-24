@@ -178,8 +178,8 @@ int _myunsetenv(info_t *);
 int populate_env_list(info_t *);
 
 char **get_environ(info_t *);
-int unsetenv(info_t *, char *);
-int setenv(info_t *, char *, char *);
+int _unsetenv(info_t *, char *);
+int _setenv(info_t *, char *, char *);
 
 char *get_history_file(info_t *info);
 int write_history(info_t *info);
